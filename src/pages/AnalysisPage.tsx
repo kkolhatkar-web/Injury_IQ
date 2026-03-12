@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Share2, AlertTriangle, Info, ToggleLeft, ToggleRight, Activity, Loader2 } from 'lucide-react';
+import { Share2, AlertTriangle, Info, ToggleLeft, ToggleRight, Activity, Loader2, Clock, Shield } from 'lucide-react';
 import { cn } from '../lib/utils';
 import { generatePrescription } from '../services/injuryService';
 import { MOCK_ATHLETES } from '../constants';
@@ -11,7 +11,7 @@ export function AnalysisPage() {
   const [view, setView] = React.useState<'FRONT' | 'BACK'>('FRONT');
   const [selectedPart, setSelectedPart] = React.useState<BodyPart>('none');
   const [cycleAware, setCycleAware] = React.useState(false);
-  const [aiPrescription, setAiPrescription] = React.useState<string | null>(null);
+  const [aiPrescription, setAiPrescription] = React.useState<{ text: string; minutes: number } | null>(null);
   const [loading, setLoading] = React.useState(false);
 
   const athlete = MOCK_ATHLETES[0];
@@ -201,9 +201,33 @@ export function AnalysisPage() {
                         </span>
                       </div>
                       <p className="text-primary dark:text-white font-bold text-lg leading-snug transition-colors">
-                        {aiPrescription}
+                        {aiPrescription?.text}
                       </p>
-                      <div className="flex items-center gap-2">
+                      
+                      {aiPrescription && (
+                        <div className="grid grid-cols-2 gap-4 pt-2">
+                          <div className="p-4 bg-accent/10 rounded-2xl border border-accent/20">
+                            <div className="flex items-center gap-2 mb-1">
+                              <Clock className="w-4 h-4 text-accent" />
+                              <span className="text-[10px] font-black text-accent uppercase tracking-widest">Minutes Cap</span>
+                            </div>
+                            <div className="text-2xl font-black text-primary dark:text-white">
+                              {aiPrescription.minutes}m
+                            </div>
+                          </div>
+                          <div className="p-4 bg-slate-100 dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700">
+                            <div className="flex items-center gap-2 mb-1">
+                              <Shield className="w-4 h-4 text-slate-400" />
+                              <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Safety Level</span>
+                            </div>
+                            <div className="text-2xl font-black text-primary dark:text-white">
+                              {aiPrescription.minutes > 60 ? 'HIGH' : aiPrescription.minutes > 30 ? 'MED' : 'LOW'}
+                            </div>
+                          </div>
+                        </div>
+                      )}
+
+                      <div className="flex items-center gap-2 pt-2">
                         <div className="px-2 py-0.5 bg-accent/10 rounded text-[8px] font-black text-accent uppercase">AI Generated</div>
                         <div className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 rounded text-[8px] font-black text-slate-400 dark:text-slate-500 uppercase transition-colors">Verified by InjuryIQ</div>
                       </div>

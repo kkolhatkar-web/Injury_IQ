@@ -116,7 +116,7 @@ export function RecoveryPage() {
             >
               <div className="relative h-48 bg-slate-100 dark:bg-slate-900 overflow-hidden transition-colors">
                 <img 
-                  src={`https://picsum.photos/seed/${session.id}/800/600`} 
+                  src={session.imageUrl} 
                   alt={session.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                   referrerPolicy="no-referrer"

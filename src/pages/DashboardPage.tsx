@@ -1,18 +1,32 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Activity, Heart, RefreshCw, Zap, Info, TrendingUp, TrendingDown } from 'lucide-react';
+import { Activity, Heart, RefreshCw, Zap, Info, TrendingUp, TrendingDown, Clock } from 'lucide-react';
 import { MOCK_ATHLETES } from '../constants';
 import { cn } from '../lib/utils';
 import { LineChart, Line, ResponsiveContainer, YAxis } from 'recharts';
 
+import { calculateRecommendedMinutes } from '../services/injuryService';
+
 export function DashboardPage() {
   const athlete = MOCK_ATHLETES[0]; // Marcus
+  const recommendedMinutes = calculateRecommendedMinutes(athlete);
 
   return (
     <div className="space-y-8 pb-20 lg:pb-8">
-      <header>
-        <h1 className="text-3xl font-bold text-primary dark:text-white transition-colors">Good morning, Marcus.</h1>
-        <p className="text-slate-500 dark:text-slate-400 transition-colors">Here's your readiness report for tonight's training.</p>
+      <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h1 className="text-3xl font-bold text-primary dark:text-white transition-colors">Good morning, Marcus.</h1>
+          <p className="text-slate-500 dark:text-slate-400 transition-colors">Here's your readiness report for tonight's training.</p>
+        </div>
+        <div className="bg-accent/10 border border-accent/20 px-6 py-3 rounded-2xl flex items-center gap-3">
+          <div className="flex flex-col">
+            <span className="text-[10px] font-black text-accent uppercase tracking-widest">Recommended Play Time</span>
+            <span className="text-2xl font-black text-primary dark:text-white">{recommendedMinutes} mins</span>
+          </div>
+          <div className="w-10 h-10 bg-accent rounded-xl flex items-center justify-center">
+            <Clock className="w-6 h-6 text-primary" />
+          </div>
+        </div>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

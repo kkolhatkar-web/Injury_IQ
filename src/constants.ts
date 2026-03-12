@@ -48,34 +48,38 @@ export const MOCK_ATHLETES: Athlete[] = [
 export const RECOVERY_SESSIONS: RecoverySession[] = [
   {
     id: 's1',
-    name: 'Rest + Mobility Protocol',
+    name: 'Yoga and Mobility Stretching',
     duration: 12,
     targetArea: 'Full Body',
     injuryReduced: 'General Overuse',
-    type: 'RED'
+    type: 'RED',
+    imageUrl: 'https://images.unsplash.com/photo-1552196563-55cd4e45efb3?auto=format&fit=crop&q=80&w=800&h=600'
   },
   {
     id: 's2',
-    name: 'Neuromuscular Training',
+    name: 'Athletic Balance Training',
     duration: 7,
     targetArea: 'Lower Body',
     injuryReduced: 'ACL Strain',
-    type: 'YELLOW'
+    type: 'YELLOW',
+    imageUrl: 'https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&q=80&w=800&h=600'
   },
   {
     id: 's3',
-    name: 'Performance Activation',
+    name: 'Core Stability Exercise',
     duration: 10,
     targetArea: 'Core & Glutes',
     injuryReduced: 'Muscle Fatigue',
-    type: 'GREEN'
+    type: 'GREEN',
+    imageUrl: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&q=80&w=800&h=600'
   },
   {
     id: 's4',
-    name: 'HSS RIIP REPS Protocol',
+    name: 'ACL Prevention Drill',
     duration: 7,
     targetArea: 'Lower Body',
     injuryReduced: 'ACL injury risk by 62%',
-    type: 'YELLOW'
+    type: 'YELLOW',
+    imageUrl: 'https://images.unsplash.com/photo-1434682881908-b43d0467b798?auto=format&fit=crop&q=80&w=800&h=600'
   }
 ];

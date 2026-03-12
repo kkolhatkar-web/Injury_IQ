@@ -35,4 +35,5 @@ export interface RecoverySession {
   targetArea: string;
   injuryReduced: string;
   type: 'RED' | 'YELLOW' | 'GREEN';
+  imageUrl: string;
 }
